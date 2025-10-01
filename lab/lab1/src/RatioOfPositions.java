@@ -18,7 +18,7 @@ public class RatioOfPositions {
     public static int ratio(int[] array) {
         int reference = 1, count = 0;
 
-        for (int i = array.length - 1; i > 0; i--) {
+        for (int i = array.length - 1; i >= 0; i--) {
             if (array[i] == reference) {
                 count += 1;
             } else {
