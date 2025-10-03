@@ -38,3 +38,4 @@ public class ArrayMultiplication {
         ArrayFunctions.printArray(multiply(arr1, arr2));
     }
 }
+

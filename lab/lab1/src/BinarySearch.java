@@ -50,3 +50,4 @@ public class BinarySearch {
         System.out.printf("Результат через рекурсивный способ: %d\n", recursiveSearch(arr, target, 0, arr.length - 1));
     }
 }
+

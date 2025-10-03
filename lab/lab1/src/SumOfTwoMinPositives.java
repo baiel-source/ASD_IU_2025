@@ -33,3 +33,4 @@ public class SumOfTwoMinPositives {
         System.out.printf("Сумма двух наименьших положительных чисел: %d", sumTwoMinPositive(arr));
     }
 }
+
