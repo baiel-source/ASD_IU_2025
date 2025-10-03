@@ -6,39 +6,32 @@ import java.util.Scanner;
 public class Task1A {
 
     public static void main(String[] args) throws IOException {
-        int numberN = readNumberN();
-        int numberM = readNumberM();
+        int numberN = readNumber("Введите число в десятичной системе: ");
+        int numberM = readNumber("Введите основание системы счисления от 2 до 9: ");
         String convertNumber = convertNumber(numberN, numberM);
         numberResult(numberN, numberM, convertNumber);
     }
 
-    public static int readNumberN() throws IOException {
+    public static int readNumber(String prompt) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Введите число в десятичной системе: ");
+        System.out.print(prompt);
         String number = reader.readLine();
         return Integer.parseInt(number);
     }
 
-    public static int readNumberM() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Введите основание системы счисления от 2 до 9: ");
-        String number = reader.readLine();
-        return Integer.parseInt(number);
-    }
-
-    public static String convertNumber(int N, int M) {
-        if (N == 0) {
+    public static String convertNumber(int n, int m) {
+        if (n == 0) {
             return "0";
         }
-        int number = Math.abs(N);
-        int length = resultLength(number, M);
+        int number = Math.abs(n);
+        int length = resultLength(number, m);
 
         char[] resultArray = new char[length];
         int index = length - 1;
         while (number > 0) {
-            int remainder = number % M;
+            int remainder = number % m;
             resultArray[index] = (char)('0' + remainder);
-            number = number / M;
+            number = number / m;
             index--;
         }
         String result = new String(resultArray);

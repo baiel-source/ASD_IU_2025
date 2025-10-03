@@ -6,15 +6,15 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        int size = arraySize();
-        int[] array = arrayInput(size);
+        int size = Array.arraySize();
+        int[] array = Array.arrayInput(size);
 
         System.out.println("\nВведенный массив:");
 
-        arrayPrint(array);
+        Array.arrayPrint(array);
         arraySort(array);
         System.out.println("Отсортированный массив:");
-        arrayPrint(array);
+        Array.arrayPrint(array);
 
         int number = numberInput();
 
@@ -33,38 +33,10 @@ public class Main {
         }
     }
 
-    public static int arraySize() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите количество элементов массива: ");
-        return scanner.nextInt();
-    }
-
-    public static int[] arrayInput(int size) {
-        Scanner scanner = new Scanner(System.in);
-        int[] array = new int[size];
-        System.out.println("Введите элементы массива:");
-        for (int i = 0; i < size; i++) {
-            System.out.print("Элемент " + (i + 1) + ": ");
-            array[i] = scanner.nextInt();
-        }
-        return array;
-    }
-
     public static int numberInput() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Введите число для поиска: ");
         return Integer.parseInt(reader.readLine());
-    }
-
-    public static void arrayPrint(int[] array) {
-        System.out.print("Массив: [");
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i]);
-            if (i < array.length - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
     }
 
     public static void arraySort(int[] array) {
