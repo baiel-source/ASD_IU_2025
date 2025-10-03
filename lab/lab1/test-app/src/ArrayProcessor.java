@@ -1,14 +1,6 @@
 import java.util.Scanner;
 
 public class ArrayProcessor {
-    private static final int MIN_ARRAY_LENGTH = 1;
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int[] NumberArray = createNumberArray(scanner);
-        printArray(NumberArray);
-        scanner.close();
-    }
 
     public static int[] createNumberArray(Scanner scanner) {
         int arrayLength = readArrayLength(scanner);

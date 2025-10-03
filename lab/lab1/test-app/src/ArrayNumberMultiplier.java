@@ -24,10 +24,7 @@ public class ArrayNumberMultiplier {
     }
 
     public static int[] multiplyArrayNumbers(int[] firstArray, int[] secondArray) {
-        int firstNumber = convertArrayToNumber(firstArray);
-        int secondNumber = convertArrayToNumber(secondArray);
-        int multiplicationResult = firstNumber * secondNumber;
-        return convertNumberToArray(multiplicationResult);
+        return convertNumberToArray(convertArrayToNumber(firstArray) * convertArrayToNumber(secondArray));
     }
 
     private static int convertArrayToNumber(int[] digitArray) {
