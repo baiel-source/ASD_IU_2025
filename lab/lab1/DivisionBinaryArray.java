@@ -12,7 +12,7 @@ true – число делится на N, false – нет.
 так: [false, false, true].
 Примечание. Делитель тоже необходимо ввести с клавиатуры.*/
 
-class DivisionBinaryArray {
+public class DivisionBinaryArray {
 
     public static void main() {
 

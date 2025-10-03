@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /*Дан массив целых чисел. Минимальное количество элементов – 5 Вернуть
 число, которое является суммой двух наименьших положительных чисел.*/
-class Summary {
+public class Summary {
 
     public static void main() {
 

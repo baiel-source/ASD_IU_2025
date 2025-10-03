@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /*Дано целое число. Реализуйте метод, который находит N первых простых
 чисел. Используйте алгоритм «Решето Эратосфена».*/
-class SimpleNumbers {
+public class SimpleNumbers {
 
     public static void main() {
 

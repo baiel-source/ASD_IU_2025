@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 //Реализовать алгоритм бинарного поиска двумя способами.
-class BinarySearch {
+public class BinarySearch {
 
     public static void main() {
 

@@ -3,7 +3,7 @@ import java.util.Scanner;
 /*Дан целочисленный массив. Верните число, частота встречи которого в
 массиве равна его значению. Если таких чисел нет, вернуть «-1». Если
 таких чисел несколько, вернуть наибольшее.*/
-class FindNumbers {
+public class FindNumbers {
 
     public static void main() {
 
