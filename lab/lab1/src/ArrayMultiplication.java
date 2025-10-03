@@ -18,7 +18,13 @@ public class ArrayMultiplication {
 
         int k = 0;
         while (k < result.length - 1 && result[k] == 0) k++;
-        return Arrays.copyOfRange(result, k, result.length);
+        int newLength = result.length - k;
+        int[] trimmed = new int[newLength];
+        for (int i = 0; i < newLength; i++) {
+            trimmed[i] = result[k + i];
+        }
+
+        return trimmed;
     }
 
     public static void main(String[] args) {
