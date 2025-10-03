@@ -1,7 +1,5 @@
 // Группа Б. Дан массив целых чисел. Минимальное количество элементов – 5.
 // Вернуть число, которое является суммой двух наименьших положительных чисел.
-
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class SumOfTwoMinPositives {
