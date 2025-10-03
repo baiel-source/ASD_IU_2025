@@ -2,7 +2,6 @@
 // Дан массив целых чисел. Реализовать умножение двух чисел.
 
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class ArrayMultiplication {
     private static int[] multiply(int[] arr1, int[] arr2) {
@@ -36,6 +35,6 @@ public class ArrayMultiplication {
         System.out.print("Второй массив: ");
         ArrayFunctions.printArray(arr2);
         System.out.print("Результат: ");
-        System.out.println(Arrays.toString(multiply(arr1, arr2)));
+        ArrayFunctions.printArray(multiply(arr1, arr2));
     }
 }
