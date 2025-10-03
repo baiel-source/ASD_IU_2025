@@ -5,10 +5,10 @@ public class BinarySearch {
 
     public static void main() {
 
-        Scanner in = new Scanner(System.in);
+        final Scanner in = new Scanner(System.in);
 
         System.out.print("Введите длину массива : ");
-        int arrayLen = in.nextInt();
+        final int arrayLen = in.nextInt();
         int[] arr = new int[arrayLen];
         for (int i = 0; i < arrayLen; i++) {
             System.out.print("Введите элемент: ");

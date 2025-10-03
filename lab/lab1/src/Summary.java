@@ -6,10 +6,10 @@ public class Summary {
 
     public static void main() {
 
-        Scanner in = new Scanner(System.in);
+        final Scanner in = new Scanner(System.in);
 
         System.out.print("Введите длину массива(не меньше 5) : ");
-        int arrayLen = in.nextInt();
+        final int arrayLen = in.nextInt();
         if (arrayLen < 5) {
             System.out.print("Длина меньше 5");
             return;

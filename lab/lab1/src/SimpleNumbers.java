@@ -6,10 +6,10 @@ public class SimpleNumbers {
 
     public static void main() {
 
-        Scanner in = new Scanner(System.in);
+        final Scanner in = new Scanner(System.in);
 
         System.out.print("Введите, сколько простых чисел хотите получить: ");
-        int countSimpleNumbers = in.nextInt();
+        final int countSimpleNumbers = in.nextInt();
 
         boolean[] isSimple = new boolean[countSimpleNumbers];
         isSimple = sieve(countSimpleNumbers);

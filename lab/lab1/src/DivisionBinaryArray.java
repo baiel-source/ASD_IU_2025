@@ -16,10 +16,10 @@ public class DivisionBinaryArray {
 
     public static void main() {
 
-        Scanner in = new Scanner(System.in);
+        final Scanner in = new Scanner(System.in);
 
         System.out.print("Введите длину массива : ");
-        int arrayLen = in.nextInt();
+        final int arrayLen = in.nextInt();
         int[] arr = new int[arrayLen];
         for (int i = 0; i < arrayLen; i++) {
             System.out.print("Введите элемент: ");
@@ -27,7 +27,7 @@ public class DivisionBinaryArray {
         }
 
         System.out.print("Введите делитель: ");
-        int divisor = in.nextInt();
+        final int divisor = in.nextInt();
 
         int[] newArr = conventing(arr);
 
