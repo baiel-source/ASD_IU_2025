@@ -2,23 +2,23 @@ import java.util.Scanner;
 
 public class ArrayFunctions {
     public static int[] createArray(Scanner in, int requiredLength) {
-        int n;
+        int input;
 
         if (requiredLength > 0) {
             do {
                 System.out.print("Введите количество элементов в массиве (не меньше " + requiredLength + "): ");
-                n = in.nextInt();
-                if (n < requiredLength) {
+                input = in.nextInt();
+                if (input < requiredLength) {
                     System.out.println("Ошибка! Массив должен содержать как минимум " + requiredLength + " элементов.");
                 }
-            } while (n < requiredLength);
+            } while (input < requiredLength);
         } else {
             System.out.print("Введите количество элементов в массиве: ");
-            n = in.nextInt();
+            input = in.nextInt();
         }
 
-        int[] intArray = new int[n];
-        for (int i = 0; i < n; i++) {
+        int[] intArray = new int[input];
+        for (int i = 0; i < input; i++) {
             System.out.print("Введите " + i + " элемент массива: ");
             int element = in.nextInt();
             intArray[i] = element;
@@ -28,19 +28,19 @@ public class ArrayFunctions {
     }
 
     public static void printArray(int[] array) {
-        for (int j : array) {
-            System.out.printf("%d ", j);
+        for (int element : array) {
+            System.out.printf("%d ", element);
         }
         System.out.println();
     }
 
     public static void bubbleSort(int[] arr) {
-        int n = arr.length;
+        int length = arr.length;
         boolean swapped;
 
-        for (int i = 0; i < n - 1; i++) {
+        for (int i = 0; i < length - 1; i++) {
             swapped = false;
-            for (int j = 0; j < n - i - 1; j++) {
+            for (int j = 0; j < length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
                     int temp = arr[j];
                     arr[j] = arr[j + 1];

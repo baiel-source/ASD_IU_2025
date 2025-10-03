@@ -4,6 +4,18 @@
 import java.util.Scanner;
 
 public class ArrayMultiplication {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] arr1 = ArrayFunctions.createArray(in, -1);
+        int[] arr2 = ArrayFunctions.createArray(in, -1);
+        System.out.print("Первый массив: ");
+        ArrayFunctions.printArray(arr1);
+        System.out.print("Второй массив: ");
+        ArrayFunctions.printArray(arr2);
+        System.out.print("Результат: ");
+        ArrayFunctions.printArray(multiply(arr1, arr2));
+    }
+
     private static int[] multiply(int[] arr1, int[] arr2) {
         int[] result = new int[arr1.length + arr2.length];
 
@@ -15,27 +27,15 @@ public class ArrayMultiplication {
             }
         }
 
-        int k = 0;
-        while (k < result.length - 1 && result[k] == 0) k++;
-        int newLength = result.length - k;
+        int firstNotNullIndex = 0;
+        while (firstNotNullIndex < result.length - 1 && result[firstNotNullIndex] == 0) firstNotNullIndex++;
+        int newLength = result.length - firstNotNullIndex;
         int[] trimmed = new int[newLength];
         for (int i = 0; i < newLength; i++) {
-            trimmed[i] = result[k + i];
+            trimmed[i] = result[firstNotNullIndex + i];
         }
 
         return trimmed;
-    }
-
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int[] arr1 = ArrayFunctions.createArray(in, -1);
-        int[] arr2 = ArrayFunctions.createArray(in, -1);
-        System.out.print("Первый массив: ");
-        ArrayFunctions.printArray(arr1);
-        System.out.print("Второй массив: ");
-        ArrayFunctions.printArray(arr2);
-        System.out.print("Результат: ");
-        ArrayFunctions.printArray(multiply(arr1, arr2));
     }
 }
 

@@ -1,7 +1,21 @@
 // Основное задание. Реализовать алгоритм бинарного поиска двумя способами.
+
 import java.util.Scanner;
 
 public class BinarySearch {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int[] arr = ArrayFunctions.createArray(in, -1);
+        ArrayFunctions.bubbleSort(arr);
+        System.out.print("Отсортированный массив: ");
+        ArrayFunctions.printArray(arr);
+        System.out.print("Введите элемент для поиска: ");
+        int target = in.nextInt();
+        System.out.printf("Результат через итеративный способ: %d\n", iterativeSearch(arr, target));
+        System.out.printf("Результат через рекурсивный способ: %d\n", recursiveSearch(arr, target, 0, arr.length - 1));
+    }
+
     private static int iterativeSearch(int[] arr, int target) {
         int left = 0;
         int right = arr.length - 1;
@@ -37,17 +51,6 @@ public class BinarySearch {
         }
     }
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
 
-        int[] arr = ArrayFunctions.createArray(in, -1);
-        ArrayFunctions.bubbleSort(arr);
-        System.out.print("Отсортированный массив: ");
-        ArrayFunctions.printArray(arr);
-        System.out.print("Введите элемент для поиска: ");
-        int target = in.nextInt();
-        System.out.printf("Результат через итеративный способ: %d\n", iterativeSearch(arr, target));
-        System.out.printf("Результат через рекурсивный способ: %d\n", recursiveSearch(arr, target, 0, arr.length - 1));
-    }
 }
 

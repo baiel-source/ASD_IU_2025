@@ -1,8 +1,17 @@
 // Группа Б. Дан массив целых чисел. Минимальное количество элементов – 5.
 // Вернуть число, которое является суммой двух наименьших положительных чисел.
+
 import java.util.Scanner;
 
 public class SumOfTwoMinPositives {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] arr = ArrayFunctions.createArray(in, 5);
+        System.out.print("Массив: ");
+        ArrayFunctions.printArray(arr);
+        System.out.printf("Сумма двух наименьших положительных чисел: %d", sumTwoMinPositive(arr));
+    }
+
     private static int sumTwoMinPositive(int[] arr) {
         int min1 = Integer.MAX_VALUE;
         int min2 = Integer.MAX_VALUE;
@@ -23,14 +32,6 @@ public class SumOfTwoMinPositives {
         }
 
         return min1 + min2;
-    }
-
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int[] arr = ArrayFunctions.createArray(in, 5);
-        System.out.print("Массив: ");
-        ArrayFunctions.printArray(arr);
-        System.out.printf("Сумма двух наименьших положительных чисел: %d", sumTwoMinPositive(arr));
     }
 }
 
