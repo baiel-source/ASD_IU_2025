@@ -3,14 +3,14 @@
 package maintask;
 
 import java.util.Scanner;
-import array.Array;
+import arrays.ArraysMethods;
 
 public class BinarySearch {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[] array = Array.inputArray();
-        array = Array.bubbleSort(array);
+        int[] array = ArraysMethods.inputArray();
+        array = ArraysMethods.bubbleSort(array);
         System.out.println("Array has been sorted!");
 
         int leftIndex = 0;

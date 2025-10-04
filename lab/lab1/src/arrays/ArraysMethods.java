@@ -1,8 +1,8 @@
-package array;
+package arrays;
 
 import java.util.Scanner;
 
-public class Array {
+public class ArraysMethods {
     static Scanner scanner = new Scanner(System.in);
 
     public static int[] inputArray() {

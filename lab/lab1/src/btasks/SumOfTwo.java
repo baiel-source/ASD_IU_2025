@@ -3,11 +3,11 @@
 
 package btasks;
 
-import array.Array;
+import arrays.ArraysMethods;
 
 public class SumOfTwo {
     public static void main(String[] args) {
-        int[] array = Array.inputArray();
+        int[] array = ArraysMethods.inputArray();
         if (array.length < 5) {
             System.out.println("Array must have 5 or more elements");
         } else {
@@ -16,34 +16,34 @@ public class SumOfTwo {
             if (result == -1) {
                 System.out.println("There is not enough positive numbers");
             } else {
-                System.out.println("Summary: " + findSumOfTwoMinNumbers(array));
+                System.out.println("Summary: " + result);
             }
         }
     }
 
     static int findSumOfTwoMinNumbers(int[] arr) {
-        int min1 = 2^31 - 1;
-        int min2 = 2^31;
+        int firstMinNumber = Integer.MAX_VALUE;
+        int secondMinNumber = Integer.MAX_VALUE;
 
-        int k = 0;
+        int positiveNumbersCounter = 0;
 
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > 0 & arr[i] < min1) {
-                min2 = min1;
-                min1 = arr[i];
-                k++;
+            if (arr[i] > 0 & arr[i] < firstMinNumber) {
+                secondMinNumber = firstMinNumber;
+                firstMinNumber = arr[i];
+                positiveNumbersCounter++;
             }
 
-            if (arr[i] > min1 & arr[i] < min2) {
-                min2 = arr[i];
-                k++;
+            if (arr[i] > firstMinNumber & arr[i] < secondMinNumber) {
+                secondMinNumber = arr[i];
+                positiveNumbersCounter++;
             }
         }
 
-        if (k < 2) {
+        if (positiveNumbersCounter < 2) {
             return -1;
         }
 
-        return (min1 + min2);
+        return (firstMinNumber + secondMinNumber);
     }
 }

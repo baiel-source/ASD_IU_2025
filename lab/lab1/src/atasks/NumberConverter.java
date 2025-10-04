@@ -10,12 +10,12 @@ public class NumberConverter {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Input N:");
-        int N = scanner.nextInt();
-        System.out.println("Input M from 2 to 9:");
-        int M = scanner.nextInt();
+        System.out.println("Input number:");
+        int num = scanner.nextInt();
+        System.out.println("Input base from 2 to 9:");
+        int base = scanner.nextInt();
 
-        System.out.println("Number " + N + " in base " + M + " is " + convert(N, M));
+        System.out.println("Number " + num + " in base " + base + " is " + convert(num, base));
     }
 
     static String convert(int num, int base) {

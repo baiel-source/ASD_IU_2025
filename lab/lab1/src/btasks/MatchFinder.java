@@ -4,25 +4,13 @@
 
 package btasks;
 
-import array.Array;
+import arrays.ArraysMethods;
 
 public class MatchFinder {
     public static void main(String[] args) {
-        int[] array = Array.inputArray();
+        int[] array = ArraysMethods.inputArray();
 
         System.out.print("result: " + findMatch(array));
-    }
-
-    static int countNumber(int[] arr, int num) {
-        int count = 0;
-
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == num) {
-                count++;
-            }
-        }
-
-        return count;
     }
 
     static int findMatch(int[] arr) {
@@ -36,5 +24,17 @@ public class MatchFinder {
         }
 
         return result;
+    }
+
+    static int countNumber(int[] arr, int num) {
+        int count = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == num) {
+                count++;
+            }
+        }
+
+        return count;
     }
 }
