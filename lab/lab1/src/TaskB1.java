@@ -9,18 +9,17 @@ import java.util.Scanner;
 public class TaskB1 {
 
     public static void task1(String[] args) {
-        //Ввод и вывод
+        //Ввод
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input a length of the array: \n");
         int n = scanner.nextInt();
+        int[] array = ArrayTools.arrayInput(n);
+        //Вывод
+        System.out.println(countFrequency(n, array));
+    }
 
-
-        int[] array = new int[n];
-        System.out.println("Input elements of the array: \n");
-        for (int i = 0; i < n; i++) array[i] = scanner.nextInt();
-
+    public static int countFrequency(int n, int[] array) {
         int result = -1;
-
         for (int i = 0; i < n; i++) {
             int current = array[i];
             if (current > n) continue;
@@ -30,6 +29,6 @@ public class TaskB1 {
             }
             if (current == count) result = Math.max(result, current);
         }
-        System.out.println(result);
+        return result;
     }
 }

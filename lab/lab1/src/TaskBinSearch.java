@@ -6,32 +6,20 @@ import java.util.Scanner;
 public class TaskBinSearch {
 
     public static void main(String[] args) {
-
+        //Ввод
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input a length of the array: \n");
         int n = scanner.nextInt();
-
-        int[] array = new int[n];
-        System.out.println("Input elements of the array: \n");
-        for (int i = 0; i < n; i++) array[i] = scanner.nextInt();
-
+        //Вводим и сразу сортируем массив
+        int[] array = ArrayTools.arrayInput(n);
+        ArrayTools.arrayInsertionSort(array);
         System.out.println("Input a number that you want to find: \n");
         int number = scanner.nextInt();
 
-
-        //Сортировка вставками
-        for (int left = 0; left < array.length; left++) {
-            int value = array[left];
-            int i = left - 1;
-            for (; i >= 0; i--) {
-                if (array[i] > value) array[i + 1] = array[i];
-                else break;
-            }
-            array[i + 1] = value;
-        }
+        //Вывод массива
         System.out.println(Arrays.toString(array));
 
-        System.out.println("Index of the your number is " + iterBinSearch(array, number, 0, array.length - 1));
+        System.out.println("Index of your number is " + iterBinSearch(array, number, 0, array.length - 1));
         System.out.println("Index of your number is " + recBinSearch(array, number, 0, array.length - 1));
     }
 

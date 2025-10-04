@@ -34,7 +34,8 @@ public class TaskB3 {
                 min1 = array[i];
             }
             //Проверяем число на случай если оно больше первого минимума, но при этом меньше второго
-            else if (((array[i] < min2 && array[i] > 0) || min2 == MIN) && array[i] != min1) min2 = array[i];
+            else if (((array[i] < min2 && array[i] > 0) || min2 == MIN) && array[i] != min1)
+                min2 = array[i];
         }
         return min1 + min2;
     }

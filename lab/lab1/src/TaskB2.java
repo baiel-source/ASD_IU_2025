@@ -13,25 +13,21 @@ import java.util.Scanner;
 
 public class TaskB2 {
     public static void main(String[] args) {
-        //Ввод двух чисел и вывод их в виде массива
+        //Ввод двух массивов
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the first number: ");
-        int num1 = scanner.nextInt();
-        System.out.println("Enter the second number: ");
-        int num2 = scanner.nextInt();
-        System.out.println("\nThe first number is: ");
-        printArray(numToArray(num1));
-        System.out.println("\nThe second number is: ");
-        printArray(numToArray(num2));
-        //Умножение этих чисел с выводом
-        int result = num1 * num2;
-        int[] resultArr = numToArray(result);
-        System.out.println("\nThe result is: ");
-        printArray(resultArr);
+        System.out.println("Enter the length of the first array: ");
+        int len1 = scanner.nextInt();
+        int[] array1 = ArrayTools.arrayInput(len1);
+        System.out.println("Enter the length of the second array: ");
+        int len2 = scanner.nextInt();
+        int[] array2 = ArrayTools.arrayInput(len2);
+
+        //Вывод
+        multiplyNumFromTwoArrays(array1, array2);
     }
 
     //Перевод числа в массив
-    public static int[] numToArray(int n) {
+    public static void numToArray(int n) {
 
         //Поиск длины числа, для создания массива нужной длины
         int length = 0;
@@ -40,7 +36,6 @@ public class TaskB2 {
             lengthCalcN /= 10;
             length++;
         }
-
         //Запись числа в массив (задом на перед)
         int[] array = new int[length];
         int i = 0;
@@ -49,11 +44,19 @@ public class TaskB2 {
             n = n / 10;
             i++;
         }
-        return array;
+        System.out.println("\nThe result is: ");
+        ArrayTools.arrayReverseOutput(array);
     }
 
-    //Вывод массива начиная с конца, т. к. у нас числа записывались начиная с конца в методе numToArray
-    public static void printArray(int[] arr) {
-        for (int i = arr.length - 1; i >= 0; i--) System.out.print(arr[i] + " ");
+
+    public static void multiplyNumFromTwoArrays(int[] arr1, int[] arr2) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter an index in the first array: ");
+        int index1 = scanner.nextInt();
+        System.out.println("Enter an index in the second array, to multiply it with the number from the first array: ");
+        int index2 = scanner.nextInt();
+
+        numToArray((arr1[index1] * arr2[index2]));
     }
 }
