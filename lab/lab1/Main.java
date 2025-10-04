@@ -2,21 +2,6 @@ package lab1;// 1 способ обычный
 
 import java.util.Scanner;
 public class Main {
-    public static int bin(int[] arr, int t) {
-        int l = 0;
-        int r = arr.length - 1;
-        while (l <= r) {
-            int mid = (r + l) / 2;
-            if (arr[mid] == t) {
-                return mid;
-            } else if (arr[mid] < t) {
-                l = mid + 1;
-            } else {
-                r = mid - 1;
-            }
-        }
-        return -1;
-    }
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.println("Сколько чисел? ");
@@ -36,6 +21,23 @@ public class Main {
         }
         s.close();
     }
+
+    public static int bin(int[] arr, int t) {
+        int l = 0;
+        int r = arr.length - 1;
+        while (l <= r) {
+            int mid = (r + l) / 2;
+            if (arr[mid] == t) {
+                return mid;
+            } else if (arr[mid] < t) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+        }
+        return -1;
+    }
+
 }
 
 
