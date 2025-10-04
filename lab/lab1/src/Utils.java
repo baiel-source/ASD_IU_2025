@@ -12,8 +12,6 @@ public class Utils {
             array[i] = val;
         }
 
-        quickSort(array, 0, array.length - 1);
-
         return array;
     }
 
@@ -47,7 +45,7 @@ public class Utils {
         return Integer.parseInt(line);
     }
 
-    private static void quickSort(int[] array, int low, int high) {
+    public static void quickSort(int[] array, int low, int high) {
         if (low < high) {
             int pivot = partition(array, low, high);
 
@@ -73,11 +71,15 @@ public class Utils {
                 return j;
             }
 
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+            swap(array, i, j);
             i++;
             j--;
         }
+    }
+
+    private static void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 }

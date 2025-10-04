@@ -9,6 +9,7 @@ public class BinarySearch {
         Scanner scanner = new Scanner(System.in);
 
         int[] array = Utils.createArray(scanner);
+        Utils.quickSort(array, 0, array.length - 1);
 
         System.out.print("Sorted array: ");
         Utils.printArr(array);

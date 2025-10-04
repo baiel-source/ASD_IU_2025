@@ -12,6 +12,18 @@ public class Isogram {
         System.out.print("Enter word: ");
         String word = scanner.nextLine();
 
+        boolean check = checkIsogram(word);
+
+        if (check) {
+            System.out.printf("Word <%s> is an isogram", word);
+        } else {
+            System.out.printf("Word <%s> is not an isogram", word);
+        }
+
+        scanner.close();
+    }
+
+    private static boolean checkIsogram(String word) {
         String line = "";
         boolean check = true;
 
@@ -23,13 +35,6 @@ public class Isogram {
                 line += s;
             }
         }
-
-        if (check) {
-            System.out.printf("Word <%s> is an isogram", word);
-        } else {
-            System.out.printf("Word <%s> is not an isogram", word);
-        }
-
-        scanner.close();
+        return check;
     }
 }

@@ -9,12 +9,14 @@ public class MinSum {
         Scanner scanner = new Scanner(System.in);
 
         int[] array = Utils.createArray(scanner);
+        Utils.quickSort(array, 0, array.length - 1);
 
         int result = -1;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > 0) {
                 if ((i + 1) <= array.length - 1) {
                     result = array[i] + array[i+1];
+                    break;
                 }
             }
         }

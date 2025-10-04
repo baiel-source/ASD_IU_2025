@@ -10,7 +10,14 @@ public class Search {
         Scanner scanner = new Scanner(System.in);
 
         int[] array = Utils.createArray(scanner);
+        Utils.quickSort(array, 0, array.length);
 
+        int maxInt = findSuitable(array);
+
+        System.out.printf("Max suitable number: %d", maxInt);
+    }
+
+    private static int findSuitable(int[] array) {
         int maxInt = -1;
         for (int i : array) {
             if (maxInt != i) {
@@ -25,6 +32,6 @@ public class Search {
                 }
             }
         }
-        System.out.printf("Max suitable number: %d", maxInt);
+        return maxInt;
     }
 }
