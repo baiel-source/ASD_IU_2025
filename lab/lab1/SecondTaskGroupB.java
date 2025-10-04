@@ -1,15 +1,15 @@
 package lab1;
 
-public class SecondTaskGroup {
+public class SecondTaskGroupB {
 
     public static void main(String[] args) {
-        int arr[] = {1, 2, 3, 4, 5};
-        int arr_2[] = {1, 2, 3};
+        int multiplierNum1[] = {1, 2, 3, 4, 5};
+        int multiplierNum2[] = {1, 2, 3};
 
-        int num_1 = translateToNumbers(arr);
-        int num_2 = translateToNumbers(arr_2);
+        int getNum1 = translateToNumbers(multiplierNum1);
+        int getNum2 = translateToNumbers(multiplierNum2);
 
-        int product = num_1 * num_2; // умножение
+        int product = getNum1 * getNum2; // умножение
         System.out.println("Произведение: " + product);
 
         int[] resultArray = numberToArray(product);
