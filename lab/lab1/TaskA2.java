@@ -18,29 +18,40 @@ public class TaskA2 {
         int length = roman.length();
 
         for (int i = 0; i < length; i++) {
-            switch (roman.charAt(i)) {
-                case 'M' -> answer += 1000;
-                case 'D' -> answer += 500;
-                case 'C' -> {
-                    if (i == length - 1 || (roman.charAt(i + 1) != 'D' && roman.charAt(i + 1) != 'M')) {
-                        answer += 100;
-                    } else answer -= 100;
-                }
-                case 'L' -> answer += 50;
-                case 'X' -> {
-                    if (i == length - 1 || (roman.charAt(i + 1) != 'L' && roman.charAt(i + 1) != 'C')) {
-                        answer += 10;
-                    } else answer -= 10;
-                }
-                case 'V' -> answer += 5;
-                case 'I' -> {
-                    if (i == length - 1 || (roman.charAt(i + 1) != 'V' && roman.charAt(i + 1) != 'X')) {
-                        answer += 1;
-                    } else answer -= 1;
-                }
-            }
+            answer += romanNumeralToArabic(
+                    roman.charAt(i),
+                    i == length - 1 ? '.' : roman.charAt(i + 1)
+            );
         }
 
         return answer;
+    }
+
+    private static int romanNumeralToArabic(char numeral, char nextNumeral) {
+        switch (numeral) {
+            case 'M' -> {
+                return 1000;
+            }
+            case 'D' -> {
+                return 500;
+            }
+            case 'C' -> {
+                return nextNumeral == 'D' || nextNumeral == 'M' ? -100 : 100;
+            }
+            case 'L' -> {
+                return 50;
+            }
+            case 'X' -> {
+                return nextNumeral == 'L' || nextNumeral == 'C' ? -10 : 10;
+            }
+            case 'V' -> {
+                return 5;
+            }
+            case 'I' -> {
+                return nextNumeral == 'V' || nextNumeral == 'X' ? -1 : 1;
+            }
+        }
+
+        return 0;
     }
 }

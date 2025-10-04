@@ -21,29 +21,29 @@ public class TaskB4 {
      */
 
     public static void main(String[] args) {
-        int[] bi_arr = MainTask.readArray();
+        int[] binaryArray = MainTask.readArray();
         System.out.println();
         int divider = MainTask.readIntSafe("Введите делитель: ", false);
-        System.out.println(writeBooleanArray(divides(toDecimal(bi_arr), divider)));
+        System.out.println(writeBooleanArray(divides(toDecimal(binaryArray), divider)));
     }
 
-    private static int[] toDecimal(int[] bi_arr) {
-        int[] arr = new int[bi_arr.length];
-        if (arr.length == 0) return arr;
+    private static int[] toDecimal(int[] binaryArray) {
+        int[] array = new int[binaryArray.length];
+        if (array.length == 0) return array;
 
-        arr[0] = bi_arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            arr[i] = bi_arr[i] + arr[i - 1] * 2;
+        array[0] = binaryArray[0];
+        for (int i = 1; i < array.length; i++) {
+            array[i] = binaryArray[i] + array[i - 1] * 2;
         }
 
-        return arr;
+        return array;
     }
 
-    private static boolean[] divides(int[] arr, int divider) {
-        boolean[] answer = new boolean[arr.length];
+    private static boolean[] divides(int[] array, int divider) {
+        boolean[] answer = new boolean[array.length];
 
-        for (int i = 0; i < arr.length; i++) {
-            answer[i] = arr[i] % divider == 0;
+        for (int i = 0; i < array.length; i++) {
+            answer[i] = array[i] % divider == 0;
         }
 
         return answer;

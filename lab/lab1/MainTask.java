@@ -19,7 +19,7 @@ public class MainTask {
         else System.out.println("Индекс искомого числа: " + indexIterative);
 
         System.out.println("\nРекурсивный поиск...");
-        int indexRecursive = binarySearchRecursive(array, value);
+        int indexRecursive = binarySearchRecursive(array, value, 0, array.length);
         if (indexRecursive == -1) System.out.println("Число отсутствует в массиве");
         else System.out.println("Индекс искомого числа: " + indexRecursive);
     }
@@ -67,22 +67,14 @@ public class MainTask {
         return -1;
     }
 
-    private static int binarySearchRecursive(int[] array, int value) {
-        if (array.length < 1) return -1;
-        int start = 0;
-        int end = array.length;
+    private static int binarySearchRecursive(int[] array, int value, int start, int end) {
+        if (end <= start) return -1;
         int middle = (start + end) / 2;
 
         if (array[middle] < value) {
-            int[] subArray = new int[end - (middle + 1)];
-            System.arraycopy(array, middle + 1, subArray, 0, subArray.length);
-            int result = binarySearchRecursive(subArray, value);
-            if (result == -1) return -1;
-            else return result + middle + 1;
+            return binarySearchRecursive(array, value, middle + 1, end);
         } else if (array[middle] > value) {
-            int[] subArray = new int[middle];
-            System.arraycopy(array, 0, subArray, 0, subArray.length);
-            return binarySearchRecursive(subArray, value);
+            return binarySearchRecursive(array, value, start, middle);
         } else {
             return middle;
         }
