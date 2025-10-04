@@ -32,9 +32,9 @@ public class BinarySearch {
             if (array[midIndex] == target) {
                 return midIndex;
             } else if (array[midIndex] < target) {
-                right = midIndex - 1;
-            } else {
                 left = midIndex + 1;
+            } else {
+                right = midIndex - 1;
             }
         }
         return -1;
@@ -49,11 +49,10 @@ public class BinarySearch {
         } else if (array[midIndex] == target) {
             return midIndex;
         } else if (array[midIndex] < target) {
-            binarySearchRecursive(array, target, midIndex + 1, right);
+            return binarySearchRecursive(array, target, midIndex + 1, right);
         } else {
-            binarySearchRecursive(array, target, left, midIndex - 1);
+            return binarySearchRecursive(array, target, left, midIndex - 1);
         }
-        return -1;
     }
 }
 
