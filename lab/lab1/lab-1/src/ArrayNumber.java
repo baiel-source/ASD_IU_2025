@@ -33,6 +33,7 @@ public class ArrayNumber {
         return result;
     }
 
+    // Перевод числа в требуемый формат (список из цифр числа):
     private static int[] numToArr(int number) {
         int temp = number;
         int count = 0;
