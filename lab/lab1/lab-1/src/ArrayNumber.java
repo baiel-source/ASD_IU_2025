@@ -34,8 +34,8 @@ public class ArrayNumber {
     }
 
     // Перевод числа в требуемый формат (список из цифр числа):
-    private static int[] numToArr(int number) {
-        int temp = number;
+    private static int[] numToArr(long number) {
+        long temp = number;
         int count = 0;
         while (temp > 0) {
             temp /= 10;
@@ -44,7 +44,7 @@ public class ArrayNumber {
 
         int[] array = new int[count];
         for (int i = array.length - 1; i >= 0; i--) {
-            array[i] = number % 10;
+            array[i] = (int) (number % 10);
             number /= 10;
         }
         return array;
