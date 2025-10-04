@@ -28,8 +28,7 @@ public class TaskA3 {
 
         HashSet<Character> letters = new HashSet<>();
         for (int i = 0; i < s.length(); i++) {
-            if (letters.contains(s.charAt(i))) return false;
-            letters.add(s.charAt(i));
+            if (!letters.add(s.charAt(i))) return false;
         }
 
         return true;

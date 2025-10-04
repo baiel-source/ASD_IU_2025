@@ -13,22 +13,21 @@ public class TaskA4 {
     }
 
     private static int[] firstPrimeNumbers(int n) {
+        if (n < 1) return new int[0];
+        int limit = n > 10 ? (int) (n * (Math.log(n) + Math.log(Math.log(n)))) : 30;
+
         int[] primes = new int[n];
+        boolean[] numbersDeleted = new boolean[limit];
 
         int index = 0;
         for (int number = 2; index < n; number++) {
-            boolean isPrime = true;
+            if (numbersDeleted[number]) continue;
 
-            for (int i = 0; i < index; i++) {
-                if (number % primes[i] == 0) {
-                    isPrime = false;
-                    break;
-                }
-            }
+            primes[index] = number;
+            index++;
 
-            if (isPrime) {
-                primes[index] = number;
-                index++;
+            for (int i = number * 2; i < numbersDeleted.length; i+= number) {
+                numbersDeleted[i] = true;
             }
         }
 
