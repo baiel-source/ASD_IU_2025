@@ -9,6 +9,7 @@ package lab1.b2;
 import lab1.CustomArr;
 
 import java.io.IOException;
+import java.math.BigInteger;
 
 public class B2 {
     public static void main(String[] args) throws IOException {
@@ -16,27 +17,25 @@ public class B2 {
         CustomArr arr2 = new CustomArr();
         arr1.inputArray();
         arr2.inputArray();
-        int n1 = converterArrToInt(arr1.getArr());
-        int n2 = converterArrToInt(arr2.getArr());
-        int n = n1 * n2;
-        int[] arr = converterIntToArr(n);
+        BigInteger n1 = converterArrToBigInteger(arr1.getArr());
+        BigInteger n2 = converterArrToBigInteger(arr2.getArr());
+        BigInteger n = n1.multiply(n2);
+        int[] resultArr = converterBigIntegerToArr(n);
         CustomArr result = new CustomArr();
-        result.setArray(arr);
+        result.setArray(resultArr);
         result.printArray();
     }
 
-    public static int converterArrToInt(int[] arr) {
-        String s = "";
-        int n;
+    public static BigInteger converterArrToBigInteger(int[] arr) {
+        StringBuilder s = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
-            s += Integer.toString(arr[i]);
+            s.append(arr[i]);
         }
-        n = Integer.parseInt(s);
-        return n;
+        return new BigInteger(s.toString());
     }
 
-    public static int[] converterIntToArr(int n) {
-        String s = Integer.toString(n);
+    public static int[] converterBigIntegerToArr(BigInteger n) {
+        String s = n.toString();
         int[] arr = new int[s.length()];
         for (int i = 0; i < s.length(); i++) {
             arr[i] = Character.getNumericValue(s.charAt(i));
