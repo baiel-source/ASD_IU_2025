@@ -27,6 +27,6 @@ public class RatioOfPositions {
                 count = 1;
             }
         }
-        return -1;
+        return reference == count ? count : -1;
     }
 }
