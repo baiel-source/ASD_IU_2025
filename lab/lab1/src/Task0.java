@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import tools.Array;
+import tools.Tools;
 
 // Реализовать алгоритм бинарного поиска двумя способами.
 
@@ -14,9 +14,9 @@ public class Task0 {
             return;
         }
 
-        int[] arr = Array.getArray(length, scanner);
-        Array.sortArray(arr);
-        Array.printArray(arr);
+        int[] arr = Tools.getArray(length, scanner);
+        Tools.sortArray(arr);
+        Tools.printArray(arr);
 
         System.out.print("enter N: ");
         int value = scanner.nextInt();
@@ -26,6 +26,7 @@ public class Task0 {
         } else {
             System.out.println("BINARY SEARCH; index not found");
         }
+
         int recursiveBinarySearchIndex = recursiveBinarySearch(arr, value, 0, arr.length - 1);
         if (recursiveBinarySearchIndex != -1) {
             System.out.println("RECURSIVE BINARY SEARCH; found index: " + recursiveBinarySearchIndex);

@@ -1,4 +1,4 @@
-import tools.Array;
+import tools.Tools;
 
 import java.util.Scanner;
 
@@ -7,16 +7,16 @@ public class TaskB2 {
         Scanner scanner = new Scanner(System.in);
         System.out.print("enter length for first array: ");
         int length1 = scanner.nextInt();
-        int[] array1 = Array.getArray(length1, scanner);
+        int[] array1 = Tools.getArray(length1, scanner);
 
         System.out.print("enter length for second array: ");
         int length2 = scanner.nextInt();
-        int[] array2 = Array.getArray(length2, scanner);
+        int[] array2 = Tools.getArray(length2, scanner);
 
-        Array.printArray(array1);
-        Array.printArray(array2);
+        Tools.printArray(array1);
+        Tools.printArray(array2);
 
-        Array.printArray(integerToArray(arrayToInteger(array1) * arrayToInteger(array2)));
+        Tools.printArray(integerToArray(arrayToInteger(array1) * arrayToInteger(array2)));
     }
 
     public static int arrayToInteger(int[] array) {
@@ -31,12 +31,12 @@ public class TaskB2 {
         return result;
     }
 
-    public static int[] integerToArray(int integer) {
-        int arrayLength = String.valueOf(integer).length();
-        int[] array = new int[arrayLength];
+    public static long[] integerToArray(long number) {
+        int arrayLength = String.valueOf(number).length();
+        long[] array = new long[arrayLength];
         for (int i = arrayLength - 1; i >= 0; i--) {
-            array[i] = integer % 10;
-            integer = integer / 10;
+            array[i] = number % 10;
+            number = number / 10;
         }
         return array;
     }

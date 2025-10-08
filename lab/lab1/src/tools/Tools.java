@@ -2,7 +2,7 @@ package tools;
 
 import java.util.Scanner;
 
-public class Array {
+public class Tools {
     public static int[] getArray(int length, Scanner scanner) {
         int[] arr = new int[length];
 
@@ -20,6 +20,13 @@ public class Array {
             System.out.print(arr[i] + " ");
         }
         System.out.print("\n");
+    }
+
+    public static void printArray(long[] arr) {
+        for (long value : arr) {
+            System.out.print(value + " ");
+        }
+        System.out.println();
     }
 
     public static void sortArray(int[] arr) {
