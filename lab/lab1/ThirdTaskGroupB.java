@@ -27,7 +27,7 @@ public class ThirdTaskGroupB {
 
 
     public static String check(int[] arr) {
-        if (arr.length < 5 || arr == null) {
+        if (arr == null || arr.length < 5) {
             System.out.println("Ошибка: массив должен содержать минимум 5 элементов");
             return "Ошибка: массив должен содержать минимум 5 элементов";
         }
