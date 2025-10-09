@@ -3,26 +3,29 @@ package lab1;
 public class SecondTaskGroupB {
 
     public static void main(String[] args) {
-        int multiplierNum1[] = {1, 2, 3, 4, 5};
-        int multiplierNum2[] = {1, 2, 3};
+        int[] multiplierNum1 = {1, 2, 3, 4, 5};
+        int[] multiplierNum2 = {1, 2, 3};
 
-        int getNum1 = translateToNumbers(multiplierNum1);
-        int getNum2 = translateToNumbers(multiplierNum2);
+        int[] result = multiplyArrays(multiplierNum1, multiplierNum2);
+        printArray(result);
+    }
 
-        int product = getNum1 * getNum2; // умножение
-        System.out.println("Произведение: " + product);
+    public static int[] multiplyArrays(int[] a, int[] b) {
+        int num1 = translateToNumbers(a);
+        int num2 = translateToNumbers(b);
+        int product = num1 * num2;
+        return numberToArray(product);
+    }
 
-        int[] resultArray = numberToArray(product);
-
+    public static void printArray(int[] arr) {
         System.out.print("[");
-        for (int i = 0; i < resultArray.length; i++) {
-            System.out.print(resultArray[i]);
-            if (i < resultArray.length - 1) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
                 System.out.print(", ");
             }
         }
         System.out.println("]");
-
     }
 
 

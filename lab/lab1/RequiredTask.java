@@ -3,29 +3,24 @@ package lab1;
 import java.util.Scanner;
 
 public class RequiredTask {
-    public static void main(String[] args) {
-        int arr[] = {64, 34, 25, 12, 22, 11, 90, 65, 3, 21};
-        System.out.println("Начальный массив: ");
-        printStartArray(arr);
+    public static void main() {
+        int[] valueArr = ArrayUtils.inputArray();
 
-        insertionSort(arr);
+        System.out.println("Начальный массив: ");
+        ArrayUtils.printStartArray(valueArr);
+
+        insertionSort(valueArr);
 
         System.out.println("Отсортированный массив: ");
-        printFinalArray(arr);
+        ArrayUtils.printFinalArray(valueArr);
 
         System.out.println("Введите элемент: ");
 
         int number = inputValue();
-        binarySearch(arr, number);
-        recursiveBinarySearch(arr, 0, arr.length - 1, number);
+        binarySearch(valueArr, number);
+        recursiveBinarySearch(valueArr, 0, valueArr.length - 1, number);
     }
 
-    public static void printStartArray(int[] arr) {      //Вывод начального массива
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-    }
 
     public static void insertionSort(int[] arr) {            //Сортировка вставками
         for (int left = 0; left < arr.length; left++) {
@@ -42,12 +37,6 @@ public class RequiredTask {
         }
     }
 
-    public static void printFinalArray(int[] arr) {       //Вывод отсортированного массива
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
-    }
 
     public static int inputValue() {  //Ввод числа с клавиатуры
         Scanner scanner = new Scanner(System.in);
@@ -63,16 +52,16 @@ public class RequiredTask {
         boolean flag = false;
 
         while (left <= right) {
-            int mid_number = (left + right) / 2;
+            int middleNum = (left + right) / 2;
 
-            if (arr[mid_number] == number) {
+            if (arr[middleNum] == number) {
                 System.out.println("Элемент " + number + " найден");
                 flag = true;
                 break;
-            } else if (arr[mid_number] < number) {
-                left = mid_number + 1;
+            } else if (arr[middleNum] < number) {
+                left = middleNum + 1;
             } else {
-                right = mid_number - 1;
+                right = middleNum - 1;
             }
         }
         if (flag != true) {
@@ -82,19 +71,48 @@ public class RequiredTask {
 
     public static int recursiveBinarySearch(int arr[], int left, int right, int number) {
         if (left > right) {
-            System.out.println("Элемент " + number + " не найден");
+            System.out.println("Элемент " + number + " не найден(рекурсия)");
             return -1;
         }
 
-        int mid_number = (left + right) / 2;
-        if (arr[mid_number] == number) {
-            System.out.println("Элемент " + number + " найден");
-            return mid_number;
-        } else if (arr[mid_number] < number) {
-            return recursiveBinarySearch(arr, mid_number + 1, right, number);
+        int middleNum = (left + right) / 2;
+        if (arr[middleNum] == number) {
+            System.out.println("Элемент " + number + " найден(рекурсия)");
+            return middleNum;
+        } else if (arr[middleNum] < number) {
+            return recursiveBinarySearch(arr, middleNum + 1, right, number);
         } else {
-            return recursiveBinarySearch(arr, left, mid_number - 1, number);
+            return recursiveBinarySearch(arr, left, middleNum - 1, number);
         }
     }
 }
 
+class ArrayUtils {  //Класс по работе с массивами
+    public static int[] inputArray() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите количество элементов в массиве: ");   //Ввод массива
+        int countNum = scanner.nextInt();
+        System.out.println("Введите элементы массива: ");
+        int[] arr = new int[countNum];
+        for (int i = 0; i < countNum; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        return arr;
+    }
+
+    public static void printStartArray(int[] arr) {      //Вывод начального массива
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void printFinalArray(int[] arr) {       //Вывод отсортированного массива
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+
+}
