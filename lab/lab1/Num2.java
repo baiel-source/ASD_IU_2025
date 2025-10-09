@@ -11,7 +11,7 @@ public class Num2 {
         System.out.print("Введи слово: ");
         String word = s.nextLine();
 
-        boolean res = Isogram(word);
+        boolean res = isIsogram(word);
 
         if (res) {
             System.out.println("'" + word + "' - изограмма");
@@ -21,32 +21,22 @@ public class Num2 {
         s.close();
     }
 
-    public static boolean Isogram(String str) {
+    public static boolean isIsogram(String str) {
         if (str == null || str.isEmpty()) {
             return true;
         }
 
         str = str.toLowerCase();
-        boolean[] seenCharacters = new boolean[69]; // Увеличили размер для цифр
 
         for (int i = 0; i < str.length(); i++) {
-            char cChar = str.charAt(i);
-            int index = -1;
+            char currentChar = str.charAt(i);
 
-            if (cChar >= 'а' && cChar <= 'я') {
-                index = cChar - 'а';
-            } else if (cChar >= 'a' && cChar <= 'z') {
-                index = cChar - 'a' + 33;
-            } else if (cChar >= '0' && cChar <= '9') {
-                index = cChar - '0' + 59; // Цифры с 59 по 68 индекс
-            }
-
-            if (index != -1 && seenCharacters[index]) {
-                return false;
-            }
-
-            if (index != -1) {
-                seenCharacters[index] = true;
+            if (Character.isLetter(currentChar) || Character.isDigit(currentChar)) {
+                for (int j = i + 1; j < str.length(); j++) {
+                    if (str.charAt(j) == currentChar) {
+                        return false;
+                    }
+                }
             }
         }
         return true;

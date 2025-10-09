@@ -9,7 +9,7 @@ public class Num5 {
         System.out.print("Сколько чисел введешь? ");
         int size = s.nextInt();
         int[] arr = inputArray(size, s);
-        bubbleSort(arr);
+
         int sum = sumTwoSmallestPositive(arr);
         System.out.println("Сумма 2х наименьших положительных: " + sum);
         s.close();
@@ -24,31 +24,30 @@ public class Num5 {
         return arr;
     }
 
-    public static void bubbleSort(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
+    public static int sumTwoSmallestPositive(int[] arr) {
+        int firstMin = Integer.MAX_VALUE;
+        int secondMin = Integer.MAX_VALUE;
+
+        for (int num : arr)
+            if (num > 0) {
+                if (num < firstMin) {
+                    secondMin = firstMin;
+                    firstMin = num;
+                } else if (num < secondMin) {
+                    secondMin = num;
                 }
             }
-        }
-    }
 
-    public static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    public static int sumTwoSmallestPositive(int[] arr) {
-        int count = 0;
-        int sum = 0;
-        for (int i = 0; i < arr.length && count < 2; i++) {
-            if (arr[i] > 0) {
-                sum += arr[i];
-                count++;
+        if (secondMin == Integer.MAX_VALUE) {
+            if (firstMin == Integer.MAX_VALUE) {
+                System.out.println("Положительных чисел не найдено");
+                return 0;
+            } else {
+                System.out.println("Найдено только одно положительное число: " + firstMin);
+                return firstMin;
             }
         }
-        return sum;
+
+        return firstMin + secondMin;
     }
 }

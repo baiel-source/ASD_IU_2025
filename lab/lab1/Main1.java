@@ -5,23 +5,32 @@ import java.util.Scanner;
 public class Main1 {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        System.out.print("Сколько чисел в массиве? ");
-        int n = s.nextInt();
-        int[] num = new int[n];
-        System.out.println("Введите " + n + " отсортированные числа:");
-        for (int i = 0; i < n; i++) {
-            num[i] = s.nextInt();
-        }
+
+        // Ввод массива - отдельный метод
+        int[] num = inputArray(s);
         printArray(num);
         System.out.print("Какое число ищем? ");
         int x = s.nextInt();
         int res = rec(num, x);
+
         if (res != -1) {
             System.out.println("Число " + x + " найдено на " + res);
         } else {
             System.out.println("Числа " + x + " нет");
         }
         s.close();
+    }
+
+    // Отдельный метод для ввода массива
+    public static int[] inputArray(Scanner scanner) {
+        System.out.print("Сколько чисел в массиве? ");
+        int n = scanner.nextInt();
+        int[] array = new int[n];
+        System.out.println("Введите " + n + " отсортированные числа:");
+        for (int i = 0; i < n; i++) {
+            array[i] = scanner.nextInt();
+        }
+        return array;
     }
 
     public static void printArray(int[] arr) {
@@ -46,5 +55,4 @@ public class Main1 {
         if (arr[mid] < target) return search(arr, target, mid + 1, r);
         else return search(arr, target, l, mid - 1);
     }
-
 }
