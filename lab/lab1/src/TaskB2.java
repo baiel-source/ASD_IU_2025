@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.beans.PropertyEditorSupport;
 import java.util.Scanner;
 
 
@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class TaskB2 {
     public static void main(String[] args) {
-        //Ввод двух массивов
+        // Ввод двух массивов
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the length of the first array: ");
         int len1 = scanner.nextInt();
@@ -22,41 +22,48 @@ public class TaskB2 {
         int len2 = scanner.nextInt();
         int[] array2 = ArrayTools.arrayInput(len2);
 
-        //Вывод
-        multiplyNumFromTwoArrays(array1, array2);
+        // Вывод
+        multiplyTwoArrays(array1, array2);
+
     }
 
-    //Перевод числа в массив
-    public static void numToArray(int n) {
+    public static void multiplyTwoArrays(int[] arr1, int[] arr2) {
 
-        //Поиск длины числа, для создания массива нужной длины
-        int length = 0;
-        int lengthCalcN = n;
-        while (lengthCalcN != 0) {
-            lengthCalcN /= 10;
-            length++;
+        // Проверка
+        if (arr1 == null || arr2 == null || arr1.length == 0 || arr2.length == 0) {
+            System.out.println("The input array is null or empty");
+            return;
         }
-        //Запись числа в массив (задом на перед)
-        int[] array = new int[length];
-        int i = 0;
-        while (n != 0) {
-            array[i] = n % 10;
-            n = n / 10;
-            i++;
+
+
+        // Создание конечного массива
+        int[] result = new int[arr1.length + arr2.length];
+
+        for (int i = arr1.length - 1; i >= 0; i--) {
+            for (int j = arr2.length - 1; j >= 0; j--) {
+                int mul = arr1[i] * arr2[j];
+                int p1 = i + j;         // старший разряд
+                int p2 = i + j + 1;     // младший разряд
+
+                int sum = mul + result[p2]; // добавляем к текущему значению
+
+                result[p2] = sum % 10;      // оставляем последнюю цифру
+                result[p1] += sum / 10;     // переносим старшую часть
+            }
         }
-        System.out.println("\nThe result is: ");
-        ArrayTools.arrayReverseOutput(array);
-    }
 
+        // Проверяем на ведущие нули
+        int start = 0;
+        while (start < result.length - 1 && result[start] == 0) {
+            start++;
+        }
 
-    public static void multiplyNumFromTwoArrays(int[] arr1, int[] arr2) {
-        Scanner scanner = new Scanner(System.in);
+        // Копируем результат без ведущих нулей
+        int[] resultFinal = new int[result.length - start];
+        System.arraycopy(result, start, resultFinal, 0, resultFinal.length);
 
-        System.out.println("Enter an index in the first array: ");
-        int index1 = scanner.nextInt();
-        System.out.println("Enter an index in the second array, to multiply it with the number from the first array: ");
-        int index2 = scanner.nextInt();
-
-        numToArray((arr1[index1] * arr2[index2]));
+        for (int j : resultFinal) {
+            System.out.print(j + " ");
+        }
     }
 }

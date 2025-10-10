@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class TaskB1 {
 
-    public static void task1(String[] args) {
+    public static void main(String[] args) {
         //Ввод
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input a length of the array: \n");
