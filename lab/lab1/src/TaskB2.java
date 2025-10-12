@@ -31,11 +31,11 @@ public class TaskB2 {
         return result;
     }
 
-    public static long[] integerToArray(long number) {
+    public static int[] integerToArray(long number) {
         int arrayLength = String.valueOf(number).length();
-        long[] array = new long[arrayLength];
+        int[] array = new int[arrayLength];
         for (int i = arrayLength - 1; i >= 0; i--) {
-            array[i] = number % 10;
+            array[i] = (int) number % 10;
             number = number / 10;
         }
         return array;

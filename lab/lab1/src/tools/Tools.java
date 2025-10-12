@@ -22,13 +22,6 @@ public class Tools {
         System.out.print("\n");
     }
 
-    public static void printArray(long[] arr) {
-        for (long value : arr) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
-    }
-
     public static void sortArray(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
