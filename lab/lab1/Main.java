@@ -6,11 +6,7 @@ public class Main {
         Scanner s = new Scanner(System.in);
         System.out.println("Сколько чисел? ");
         int n = s.nextInt();
-        int[] num = new int[n];
-        System.out.println("Введи " + n + " числа по возрастанию:");
-        for (int i = 0; i < n; i++) {
-            num[i] = s.nextInt();
-        }
+        int[] num = inputArray(s, n);
         System.out.print("Какое число? ");
         int x = s.nextInt();
         int res = bin(num, x);
@@ -20,6 +16,15 @@ public class Main {
             System.out.println("Числа " + x + " нет");
         }
         s.close();
+    }
+
+    public static int[] inputArray(Scanner scanner, int size) {
+        int[] array = new int[size];
+        System.out.println("Введи " + size + " числа по возрастанию:");
+        for (int i = 0; i < size; i++) {
+            array[i] = scanner.nextInt();
+        }
+        return array;
     }
 
     public static int bin(int[] arr, int t) {
@@ -37,8 +42,4 @@ public class Main {
         }
         return -1;
     }
-
 }
-
-
-

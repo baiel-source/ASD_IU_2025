@@ -8,20 +8,11 @@ public class Num5 {
         Scanner s = new Scanner(System.in);
         System.out.print("Сколько чисел введешь? ");
         int size = s.nextInt();
-        int[] arr = inputArray(size, s);
+        int[] arr = ArrayInputUtils.inputArray(size, s);
 
         int sum = sumTwoSmallestPositive(arr);
         System.out.println("Сумма 2х наименьших положительных: " + sum);
         s.close();
-    }
-
-    public static int[] inputArray(int size, Scanner scanner) {
-        int[] arr = new int[size];
-        System.out.println("Введи " + size + " чисел:");
-        for (int i = 0; i < size; i++) {
-            arr[i] = scanner.nextInt();
-        }
-        return arr;
     }
 
     public static int sumTwoSmallestPositive(int[] arr) {
