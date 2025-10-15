@@ -4,42 +4,56 @@ package lab1.a;
 чисел. Используйте алгоритм «Решето Эратосфена». */
 
 import java.util.Scanner;
+import lab1.ArrUtility;
 
-public class EratoshenesSieve { static Scanner input = new Scanner(System.in);
+public class EratoshenesSieve {
+    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int N = input.nextInt();
-        printArray(findPrimeNumbers(N));
+        int n = input.nextInt();
+        ArrUtility.printArray(findPrimeNumbers(n));
     }
 
-    static int[] findPrimeNumbers(int N) {
-        int upLim;
-        if (N <= 20) {
-            upLim = N * 5;
+    static int[] findPrimeNumbers(int n) {
+        int upLimit = calculateUpperLimit(n);
+        boolean[] isPrime = createSieve(upLimit);
+        return extractPrimes(isPrime, n);
+    }
+
+    static int calculateUpperLimit(int n) {
+        if (n <= 20) {
+            return n * 5;
         } else {
-            upLim = (int) Math.round(N * (Math.log(N) + Math.log(Math.log(N)) - 0.5));
+            return (int) Math.round(n * (Math.log(n) + Math.log(Math.log(n)) - 0.5));
         }
-        int[] sieve = new int[upLim];
-        int[] result = new int[N];
-        for (int i = 2; i * i < upLim; i++) {
-            for (int j = i * i; j < upLim; j += i) {
-                sieve[j] -= 1;
-            }
-        }
-        int assignedValuesCount = 0;
-        for (int i = 2; i < sieve.length & assignedValuesCount < N; i++) {
-            if (sieve[i] == 0) {
-                result[assignedValuesCount] = i;
-                assignedValuesCount++;
-            }
-        }
-        return result;
     }
 
-    static void printArray(int[] array) {
-        for (int j = 0; j < array.length - 1; j++) {
-            System.out.print(array[j] + " ");
+    static boolean[] createSieve(int upLimit) {
+        boolean[] isPrime = new boolean[upLimit];
+        for (int i = 2; i < upLimit; i++) {
+            isPrime[i] = true;
         }
-        System.out.print(array[array.length - 1]);
+        for (int i = 2; i * i < upLimit; i++) {
+            if (isPrime[i]) {
+                for (int j = i * i; j < upLimit; j += i) {
+                    isPrime[j] = false;
+                }
+            }
+        }
+        return isPrime;
+    }
+
+    static int[] extractPrimes(boolean[] isPrime, int n) {
+        int[] primes = new int[n];
+        int count = 0;
+
+        for (int i = 2; i < isPrime.length && count < n; i++) {
+            if (isPrime[i]) {
+                primes[count] = i;
+                count++;
+            }
+        }
+
+        return primes;
     }
 }

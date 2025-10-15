@@ -7,7 +7,8 @@ package lab1.a;
 
 import java.util.Scanner;
 
-public class IsogramChecker {static Scanner input = new Scanner(System.in);
+public class IsogramChecker {
+    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         String word = input.next();
@@ -16,6 +17,17 @@ public class IsogramChecker {static Scanner input = new Scanner(System.in);
         } else {
             System.out.println("Не изограмма");
         }
+    }
+
+    static boolean checkForIsogram(String word) {
+        StringBuilder wordBuilder = new StringBuilder(word.toLowerCase());
+        quickSort(wordBuilder, 0, word.length() - 1);
+        for (int i = 0; i < word.length() - 1; i++) {
+            if (wordBuilder.charAt(i) == wordBuilder.charAt(i + 1)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     static void quickSort(StringBuilder word, int left, int right) {
@@ -37,16 +49,5 @@ public class IsogramChecker {static Scanner input = new Scanner(System.in);
         }
         quickSort(word, left, j);
         quickSort(word, i, right);
-    }
-
-    static boolean checkForIsogram(String word) {
-        StringBuilder wordBuilder = new StringBuilder(word.toLowerCase());
-        quickSort(wordBuilder, 0, word.length() - 1);
-        for (int i = 0; i < word.length() - 1; i++) {
-            if (wordBuilder.charAt(i) == wordBuilder.charAt(i + 1)) {
-                return false;
-            }
-        }
-        return true;
     }
 }

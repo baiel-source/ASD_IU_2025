@@ -6,20 +6,19 @@ package lab1.b;
 Пример, [1, 2, 3, 4] * [1, 1] = [1, 3, 5, 7, 4].
 Результат – число, представленное массивом. */
 
+import lab1.ArrUtility;
 
-import java.util.Scanner;
-
-public class ArrayMultiplication {  static Scanner input = new Scanner(System.in);
+public class ArrayMultiplication {
 
     public static void main(String[] args) {
-        int[] a = inputArray();
-        int[] b = inputArray();
-        printArray(multiplyArrays(a, b));
+        int[] a = ArrUtility.inputArray();
+        int[] b = ArrUtility.inputArray();
+        ArrUtility.printArray(multiplyArrays(a, b));
     }
 
     static int[] multiplyArrays(int[] firstArray, int[] secondArray) {
-        int resNum = convertArrayToNumber(firstArray) * convertArrayToNumber(secondArray);
-        return convertNumberToArray(resNum);
+        long resNum = convertArrayToNumber(firstArray) * convertArrayToNumber(secondArray);
+        return convertNumberToArrayLongVer(resNum);
     }
 
     static int convertArrayToNumber(int[] arr) {
@@ -30,33 +29,13 @@ public class ArrayMultiplication {  static Scanner input = new Scanner(System.in
         return number;
     }
 
-    static int[] convertNumberToArray(int num) {
+    static int[] convertNumberToArrayLongVer(long num) {
         int arrayLength = ("" + num).length();
         int[] resultArray = new int[arrayLength];
         for (int i = arrayLength - 1; i >= 0; i--) {
-            resultArray[i] = num % 10;
+            resultArray[i] = (int) (num % 10);
             num /= 10;
         }
         return resultArray;
     }
-
-    static void printArray(int[] arr) {
-        System.out.print("[");
-        for (int i = 0; i < arr.length - 1; i++) {
-            System.out.print(arr[i] + ", ");
-        }
-        System.out.print(arr[arr.length - 1] + "]");
-    }
-
-    static int[] inputArray() {
-        System.out.print("Введите длинну массива: ");
-        int arrLen = input.nextInt();
-        int[] arr = new int[arrLen];
-        System.out.print("Введите массив: ");
-        for (int i = 0; i < arrLen; i++) {
-            arr[i] = input.nextInt();
-        }
-        return arr;
-    }
-
 }

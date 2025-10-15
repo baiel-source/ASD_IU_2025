@@ -11,9 +11,9 @@ import java.util.Scanner;
         static Scanner input = new Scanner(System.in);
 
         public static void main(String[] args) {
-            int N = input.nextInt();
-            int M = input.nextInt();
-            System.out.println(convert(N, M));
+            int n = input.nextInt();
+            int m = input.nextInt();
+            System.out.println(convert(n, m));
         }
 
         static String convert(int number, int base) {

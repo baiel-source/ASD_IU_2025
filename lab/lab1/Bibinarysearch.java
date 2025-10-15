@@ -3,10 +3,10 @@ package lab1;
 import java.util.Scanner;
 
 public class Bibinarysearch {
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Кол-во элементов: ");
 
         int size = scanner.nextInt();
@@ -15,7 +15,7 @@ public class Bibinarysearch {
             arr[i] = scanner.nextInt();
         }
 
-        BubbleSort(arr);
+        bubbleSort(arr);
 
         System.out.print("Отсортированный массив: ");
         outarr(arr);
@@ -36,7 +36,7 @@ public class Bibinarysearch {
         }
     }
 
-    public static void BubbleSort(int[] arr) {
+    public static void bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
