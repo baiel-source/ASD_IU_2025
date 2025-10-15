@@ -1,25 +1,19 @@
 package lab1;
 
 import java.util.Scanner;
+import lab1.ArrUtility;
 
 public class Bibinarysearch {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        System.out.print("Кол-во элементов: ");
-
-        int size = scanner.nextInt();
-        int[] arr = new int[size];
-        for (int i = 0; i < size; i++) {
-            arr[i] = scanner.nextInt();
-        }
-
-        bubbleSort(arr);
-
+        int[] arr = ArrUtility.inputArray();
+        ArrUtility.bubbleSort(arr);
         System.out.print("Отсортированный массив: ");
-        outarr(arr);
-        System.out.println("Введите элемент для поиска: ");
+        ArrUtility.printArray(arr);
+
+        System.out.println(" Введите элемент для поиска: ");
         int target = scanner.nextInt();
         scanner.close();
 
@@ -33,24 +27,6 @@ public class Bibinarysearch {
             }
         } else {
             System.out.println("Ошибка");
-        }
-    }
-
-    public static void bubbleSort(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-            }
-        }
-    }
-
-    public static void outarr(int[] arr) {
-        for (int i = 0; i <= arr.length - 1; i++) {
-            System.out.print(arr[i] + " ");
         }
     }
 
