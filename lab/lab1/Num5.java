@@ -8,7 +8,7 @@ public class Num5 {
         Scanner s = new Scanner(System.in);
         System.out.print("Сколько чисел введешь? ");
         int size = s.nextInt();
-        int[] arr = ArrayInputUtils.inputArray(size, s);
+        int[] arr = ArrayInputUtils.inputArray(s, size);
 
         int sum = sumTwoSmallestPositive(arr);
         System.out.println("Сумма 2х наименьших положительных: " + sum);
