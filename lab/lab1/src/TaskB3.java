@@ -34,9 +34,15 @@ public class TaskB3 {
                 min1 = array[i];
             }
             //Проверяем число на случай если оно больше первого минимума, но при этом меньше второго
-            else if (((array[i] < min2 && array[i] > 0) || min2 == MIN) && array[i] != min1)
+            else if ((array[i] < min2|| min2 == MIN) && array[i] != min1 && array[i] > 0)
                 min2 = array[i];
         }
+        // Если не нашлось 2 минимума
+        if (min2 == MIN || min1 == MIN) {
+            System.out.println("There are not 2 minimal numbers in the array that are positive");
+            return 0;
+        }
+
         return min1 + min2;
     }
 }
