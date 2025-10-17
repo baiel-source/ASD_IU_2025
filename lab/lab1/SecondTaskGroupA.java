@@ -4,7 +4,7 @@ package lab1;
 
 public class SecondTaskGroupA {
     public static void main() {
-        String[] romanNum = Utils.InputStrings();
+        String[] romanNum = Utils.inputStrings();
 
         for (String roman : romanNum) {
             int arabic = convert(roman);

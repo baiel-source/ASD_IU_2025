@@ -1,6 +1,7 @@
 package lab1;
 
 import java.util.Scanner;
+import java.math.BigInteger;
 
 public class Utils { //Класс по работе с массивами
 
@@ -16,7 +17,7 @@ public class Utils { //Класс по работе с массивами
         return arr;
     }
 
-    public static String[] InputStrings(){
+    public static String[] inputStrings(){
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Сколько строк вы хотите ввести? ");
@@ -75,31 +76,30 @@ public class Utils { //Класс по работе с массивами
     }
 
     public static int[] multiplyArrays(int[] a, int[] b) {
-        int num1 = translateToNumbers(a);
-        int num2 = translateToNumbers(b);
-        int product = num1 * num2;
+        BigInteger num1 = translateToNumbers(a);
+        BigInteger num2 = translateToNumbers(b);
+
+        BigInteger product = num1.multiply(num2);
+
         return numberToArray(product);
     }
 
 
-    public static int translateToNumbers(int[] arr) {
+    public static BigInteger translateToNumbers(int[] arr) {
         String str = "";
         for (int i = 0; i < arr.length; i++) {
             str = str + arr[i];
         }
-        int num = Integer.parseInt(str);
-        return num;
+        return new BigInteger(str);
     }
 
 
-    public static int[] numberToArray(int num) {
-        String str = String.valueOf(num);
+    public static int[] numberToArray(BigInteger num) {
+        String str = num.toString();
         int[] arr = new int[str.length()];
-
         for (int i = 0; i < str.length(); i++) {
             arr[i] = str.charAt(i) - '0';
         }
-
         return arr;
     }
 
