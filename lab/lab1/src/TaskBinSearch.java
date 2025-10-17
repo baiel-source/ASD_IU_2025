@@ -40,8 +40,9 @@ public class TaskBinSearch {
 
     //Реализации бинарного поиска через рекурсию
     public static int recBinSearch(int[] sortedArray, int valueToFind, int low, int high) {
+        if (low > high) return -1;
         if (low == high) return (sortedArray[low] == valueToFind) ? low : -1;
-        int mid = (low + (high - low)) / 2;
+        int mid = low + (high - low) / 2;
         if (sortedArray[mid] < valueToFind) return recBinSearch(sortedArray, valueToFind, mid + 1, high);
         if (sortedArray[mid] > valueToFind) return recBinSearch(sortedArray, valueToFind, low, mid - 1);
         return mid;
