@@ -22,7 +22,7 @@ public class CircularQueue {
 
     public void enqueue(int value) {
         if (isFull()) {
-            throw new Error("Queue is full");
+            front = (front + 1) % size;
         };
         if (front == -1) {
             front = 0;
@@ -53,9 +53,11 @@ public class CircularQueue {
         };
         System.out.println("Front -> " + front);
         System.out.print("Items -> ");
-        for (int i = front; i != rear; i = (i+1) % size) {
+        int i;
+        for (i = front; i != rear; i = (i+1) % size) {
             System.out.print(items[i] + " ");
         };
+        System.out.print(items[i]);
         System.out.printf("\nRear -> %d\n", rear);
     };
 
