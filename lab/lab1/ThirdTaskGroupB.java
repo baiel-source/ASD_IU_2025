@@ -1,78 +1,53 @@
 package lab1;
 
-//Дан массив целых чисел. Минимальное количество элементов – 5 Вернуть
-//число, которое является суммой двух наименьших положительных чисел.
-
-import java.util.Scanner;
+// Дан массив целых чисел. Минимальное количество элементов – 5.
+// Вернуть число, которое является суммой двух наименьших положительных чисел.
 
 public class ThirdTaskGroupB {
 
     public static void main() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите количество элементов в массиве: ");
-        int countElements = scanner.nextInt();
-        check(InputArray(countElements));
+        int[] arr = Utils.inputArray();
+        String result = sumOfTwoSmallestPositives(arr);
+        System.out.println(result);
     }
 
-    public static int[] InputArray(int countElements) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите элементы массива: ");
-        int[] array = new int[countElements];
-        for (int i = 0; i < countElements; i++) {
-            array[i] = scanner.nextInt();
-        }
-
-        return array;
-    }
-
-
-    public static String check(int[] arr) {
-        if (arr == null || arr.length < 5) {
-            System.out.println("Ошибка: массив должен содержать минимум 5 элементов");
+    public static String sumOfTwoSmallestPositives(int[] arr) {
+        if (!isValidArray(arr)) {
             return "Ошибка: массив должен содержать минимум 5 элементов";
         }
 
-        int positiveNum[] = new int[arr.length];
-        int count = 0;
-
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > 0) {
-                positiveNum[count] = arr[i];
-                count++;
-            }
-        }
-
-        if (count < 2) {
-            System.out.println("Ошибка: массив должен содержать минимум 2 положительных числа");
+        int[] positiveNumbers = extractPositiveNumbers(arr);
+        if (positiveNumbers.length < 2) {
             return "Ошибка: массив должен содержать минимум 2 положительных числа";
         }
 
-        int[] resultArr = new int[count];  //Здесь мы создаем массив только из положительных чисел
-        for (int i = 0; i < count; i++) {
-            resultArr[i] = positiveNum[i];
-        }
+        Utils.insertionSort(positiveNumbers);
+        int sum = calculateSumOfTwoSmallest(positiveNumbers);
 
-        insertionSort(resultArr);
-
-        int sum = resultArr[0] + resultArr[1];
-        System.out.println("Сумма 2-х положительных чисел:" + sum);
         return "Сумма 2-х положительных чисел: " + sum;
     }
 
+    private static boolean isValidArray(int[] arr) {
+        return arr != null && arr.length >= 5;
+    }
 
-    public static void insertionSort(int[] arr) {            //Сортировка вставками
-        for (int left = 0; left < arr.length; left++) {
-            int value = arr[left];
-            int i = left - 1;
-            for (; i >= 0; i--) {
-                if (value < arr[i]) {
-                    arr[i + 1] = arr[i];
-                } else {
-                    break;
-                }
-            }
-            arr[i + 1] = value;
+    private static int[] extractPositiveNumbers(int[] arr) {
+        int count = 0;
+        for (int num : arr) {
+            if (num > 0) count++;
         }
+
+        int[] positives = new int[count];
+        int index = 0;
+        for (int num : arr) {
+            if (num > 0) positives[index++] = num;
+        }
+
+        return positives;
+    }
+
+    // Считает сумму двух наименьших элементов массива
+    private static int calculateSumOfTwoSmallest(int[] arr) {
+        return arr[0] + arr[1];
     }
 }
-

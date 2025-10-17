@@ -11,13 +11,13 @@ import java.util.Scanner;
 public class FirstTaskGroupA {
     public static void main() {
         System.out.println("Введите число в десятичной системе счисления: ");
-        int decimal_number = inputVoid();
+        int decimalNumber = inputVoid();
         System.out.println("Введите систему счисления: ");
-        int foundation_number = inputVoid();
+        int foundationNumber = inputVoid();
 
-        translation(decimal_number, foundation_number);
+        translation(decimalNumber, foundationNumber);
 
-        System.out.println("Получившееся значение: " + translation(decimal_number, foundation_number));
+        System.out.println("Получившееся значение: " + translation(decimalNumber, foundationNumber));
     }
 
     public static int inputVoid() {
@@ -28,11 +28,11 @@ public class FirstTaskGroupA {
         return number;
     }
 
-    public static String translation(int decimal_number, int foundation_number) {
+    public static String translation(int decimalNumber, int foundationNumber) {
 
-        int number = Math.abs(decimal_number);
+        int number = Math.abs(decimalNumber);
 
-        if (foundation_number < 2 || foundation_number > 9) {
+        if (foundationNumber < 2 || foundationNumber > 9) {
             return "Вы ввели неверное значение M";
         } else if (number == 0) {
             return "0";
@@ -41,11 +41,11 @@ public class FirstTaskGroupA {
         String str = "";
 
         while (number > 0) {
-            str = String.format("%d", number % foundation_number) + str;
+            str = String.format("%d", number % foundationNumber) + str;
             ;
-            number /= foundation_number;
+            number /= foundationNumber;
 
-            if (decimal_number < 0) {
+            if (decimalNumber < 0) {
                 str = "-" + str;
             }
         }

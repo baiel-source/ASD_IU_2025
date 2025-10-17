@@ -4,16 +4,16 @@ package lab1;
 
 public class SecondTaskGroupA {
     public static void main() {
-        String[] testNum = {"I", "IV", "IX", "XC", "CXXIV", "MMXXIII", "MCMXC"};
+        String[] romanNum = Utils.InputStrings();
 
-        for (String roman : testNum) {
+        for (String roman : romanNum) {
             int arabic = convert(roman);
             System.out.println(roman + " = " + arabic);
         }
     }
 
     public static int convert(String roman) {
-        if (roman.isEmpty() || roman == null) {
+        if (roman == null || roman.isEmpty()) {
             return 0;
         }
 
