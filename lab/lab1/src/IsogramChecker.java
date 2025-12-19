@@ -4,24 +4,26 @@ import java.util.Set;
 
 public class IsogramChecker {
 
-    public static boolean isIsogram(String str) {
-        if (str == null) {
+    private static final String CONTINUE_COMMAND = "да";
+
+    public static boolean isIsogram(String word) {
+        if (word == null) {
             return false;
         }
 
-        if (str.isEmpty()) {
+        if (word.isEmpty()) {
             return true;
         }
 
-        String lowerStr = str.toLowerCase();
+        String lowercaseWord = word.toLowerCase();
         Set<Character> seenLetters = new HashSet<>();
 
-        for (char c : lowerStr.toCharArray()) {
-            if (Character.isLetter(c)) {
-                if (seenLetters.contains(c)) {
+        for (char character : lowercaseWord.toCharArray()) {
+            if (Character.isLetter(character)) {
+                if (seenLetters.contains(character)) {
                     return false;
                 }
-                seenLetters.add(c);
+                seenLetters.add(character);
             }
         }
 
@@ -30,27 +32,27 @@ public class IsogramChecker {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean continueProgram = true;
+        boolean shouldContinue = true;
 
         System.out.println("=== Проверка изограмм ===");
 
-        while (continueProgram) {
+        while (shouldContinue) {
             System.out.print("Введите слово для проверки: ");
             String word = scanner.nextLine();
 
-            boolean result = isIsogram(word);
+            boolean isIsogram = isIsogram(word);
 
-            if (result) {
+            if (isIsogram) {
                 System.out.println("✓ '" + word + "' является изограммой");
             } else {
                 System.out.println("✗ '" + word + "' не является изограммой");
             }
 
             System.out.print("Проверить еще одно слово? (да/нет): ");
-            String answer = scanner.nextLine();
+            String userAnswer = scanner.nextLine();
 
-            if (!answer.equalsIgnoreCase("да")) {
-                continueProgram = false;
+            if (!userAnswer.equalsIgnoreCase(CONTINUE_COMMAND)) {
+                shouldContinue = false;
                 System.out.println("Программа завершена!");
             }
         }
