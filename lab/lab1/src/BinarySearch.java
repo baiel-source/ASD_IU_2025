@@ -1,8 +1,34 @@
 import java.util.Scanner;
 
-// Реализовать алгоритм бинарного поиска двумя способами.
-
 public class BinarySearch {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter array size: ");
+        int n = scanner.nextInt();
+
+        int[] arr = new int[n];
+        System.out.println("Enter array elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        sortArray(arr);
+        System.out.print("Sorted array: ");
+        printArray(arr);
+
+        System.out.print("Enter number to search: ");
+        int target = scanner.nextInt();
+
+        int result1 = binarySearchIterative(arr, target);
+        System.out.println("Iterative search: " + result1);
+
+        int result2 = binarySearchRecursive(arr, target, 0, arr.length - 1);
+        System.out.println("Recursive search: " + result2);
+
+        scanner.close();
+    }
 
     public static int binarySearchIterative(int[] arr, int target) {
         int left = 0;
@@ -55,33 +81,5 @@ public class BinarySearch {
             System.out.print(arr[i] + " ");
         }
         System.out.println();
-    }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter array size: ");
-        int n = scanner.nextInt();
-
-        int[] arr = new int[n];
-        System.out.println("Enter array elements:");
-        for (int i = 0; i < n; i++) {
-            arr[i] = scanner.nextInt();
-        }
-
-        sortArray(arr);
-        System.out.print("Sorted array: ");
-        printArray(arr);
-
-        System.out.print("Enter number to search: ");
-        int target = scanner.nextInt();
-
-        int result1 = binarySearchIterative(arr, target);
-        System.out.println("Iterative search: " + result1);
-
-        int result2 = binarySearchRecursive(arr, target, 0, arr.length - 1);
-        System.out.println("Recursive search: " + result2);
-
-        scanner.close();
     }
 }
