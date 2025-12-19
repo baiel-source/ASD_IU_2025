@@ -2,52 +2,62 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-// Реализовать алгоритм бинарного поиска двумя способами.
-
 public class SimpleRomanConverter {
 
-    private static final Map<Character, Integer> ROMAN_MAP = createRomanMap();
+    private static final Map<Character, Integer> ROMAN_NUMERALS = createRomanNumeralsMap();
+    private static final String EXIT_COMMAND = "выход";
 
-    private static Map<Character, Integer> createRomanMap() {
-        Map<Character, Integer> map = new HashMap<>();
-        map.put('I', 1);
-        map.put('V', 5);
-        map.put('X', 10);
-        map.put('L', 50);
-        map.put('C', 100);
-        map.put('D', 500);
-        map.put('M', 1000);
-        return map;
+    private static Map<Character, Integer> createRomanNumeralsMap() {
+        Map<Character, Integer> numerals = new HashMap<>();
+        numerals.put('I', 1);
+        numerals.put('V', 5);
+        numerals.put('X', 10);
+        numerals.put('L', 50);
+        numerals.put('C', 100);
+        numerals.put('D', 500);
+        numerals.put('M', 1000);
+        return numerals;
     }
 
-    public static int romanToArabic(String roman) {
-        if (roman == null || roman.isEmpty()) {
+    public static int romanToArabic(String romanNumber) {
+        validateInput(romanNumber);
+
+        String uppercaseRoman = romanNumber.toUpperCase();
+        return convertRomanToArabic(uppercaseRoman);
+    }
+
+    private static void validateInput(String romanNumber) {
+        if (romanNumber == null || romanNumber.isEmpty()) {
             throw new IllegalArgumentException("Римское число не может быть пустым");
         }
+    }
 
-        String upperRoman = roman.toUpperCase();
-        int result = 0;
-        int prevValue = 0;
+    private static int convertRomanToArabic(String romanNumber) {
+        int arabicNumber = 0;
+        int previousValue = 0;
 
-        for (int i = upperRoman.length() - 1; i >= 0; i--) {
-            char currentChar = upperRoman.charAt(i);
+        for (int index = romanNumber.length() - 1; index >= 0; index--) {
+            char currentSymbol = romanNumber.charAt(index);
+            validateRomanSymbol(currentSymbol);
 
-            if (!ROMAN_MAP.containsKey(currentChar)) {
-                throw new IllegalArgumentException("Недопустимый символ: " + currentChar);
-            }
-
-            int currentValue = ROMAN_MAP.get(currentChar);
-
-            if (currentValue < prevValue) {
-                result -= currentValue;
+            int currentValue = ROMAN_NUMERALS.get(currentSymbol);
+            
+            if (currentValue < previousValue) {
+                arabicNumber -= currentValue;
             } else {
-                result += currentValue;
+                arabicNumber += currentValue;
             }
 
-            prevValue = currentValue;
+            previousValue = currentValue;
         }
 
-        return result;
+        return arabicNumber;
+    }
+
+    private static void validateRomanSymbol(char symbol) {
+        if (!ROMAN_NUMERALS.containsKey(symbol)) {
+            throw new IllegalArgumentException("Недопустимый символ: " + symbol);
+        }
     }
 
     public static void main(String[] args) {
@@ -56,19 +66,19 @@ public class SimpleRomanConverter {
         System.out.println("=== Простой конвертер римских чисел ===");
 
         while (true) {
-            System.out.print("\nВведите римское число (или 'выход' для завершения): ");
-            String input = scanner.nextLine().trim();
+            System.out.print("\nВведите римское число (или '" + EXIT_COMMAND + "' для завершения): ");
+            String userInput = scanner.nextLine().trim();
 
-            if (input.equalsIgnoreCase("выход")) {
+            if (userInput.equalsIgnoreCase(EXIT_COMMAND)) {
                 System.out.println("Программа завершена!");
                 break;
             }
 
             try {
-                int result = romanToArabic(input);
-                System.out.println("Результат: " + input.toUpperCase() + " = " + result);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage());
+                int result = romanToArabic(userInput);
+                System.out.println("Результат: " + userInput.toUpperCase() + " = " + result);
+            } catch (IllegalArgumentException exception) {
+                System.out.println("Ошибка: " + exception.getMessage());
             }
         }
 
